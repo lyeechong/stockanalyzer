@@ -25,18 +25,24 @@ public class YahooStockUrlCreator
     {
         StringBuilder sb = new StringBuilder();
         sb.append(BASE_URL);
-        for (String stockSymbol : stocks)
+
+        int stocksSize = stocks.size();
+        for (int i = 0; i < stocksSize; i++)
         {
+            String stockSymbol = stocks.get(i);
             sb.append(stockSymbol);
-            sb.append("+");
+            if (i != stocksSize - 1)
+            {
+                sb.append("+");
+            }
         }
         sb.append("&f="); //thing before all the tags/fields
-        for(YahooStockApiDataField ysadf : ysadfList)
+        for (YahooStockApiDataField ysadf : ysadfList)
         {
-            sb.append(ysadf);
+            sb.append(ysadf.getSymbol());
             //no space required
         }
-        
+
         return sb.toString();
     }
 }

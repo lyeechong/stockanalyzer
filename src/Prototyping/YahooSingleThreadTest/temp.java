@@ -20,8 +20,8 @@ public class temp
         while (file.hasNextLine())
         {
             String line = file.nextLine();
-            String symbol = line.substring(0, 2);
-            String desc = line.substring(3);
+            String symbol = line.substring(0, 2).trim();
+            String desc = line.substring(3).trim();
             String id = desc.trim().replaceAll("\\W", "_").toUpperCase();
             System.out.println(id + "(\"" + symbol + "\", \"" + desc + "\"),");
         }
